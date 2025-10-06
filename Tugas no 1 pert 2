@@ -1,0 +1,26 @@
+class Lingkaran:
+    '''Kelas untuk mempresentasikan sebuah lingkaran'''
+
+    def __init__(self, r=0):
+        self.r = r  
+
+    def hitungLuas(self):
+        '''Metode untuk menghitung luas lingkaran'''
+        luas = 3.14 * self.r * self.r
+        print(f"Luas lingkaran dengan jari-jari {self.r} adalah\t: {luas}")
+
+    def hitungKeliling(self):
+        '''Metode untuk menghitung keliling lingkaran'''
+        keliling = 2 * 3.14 * self.r
+        print(f"Keliling lingkaran dengan jari-jari {self.r} adalah\t: {keliling}")
+
+
+# Contoh penggunaan kelas Lingkaran
+lingkaran1 = Lingkaran(7)
+lingkaran1.hitungLuas()
+lingkaran1.hitungKeliling()
+
+lingkaran2 = Lingkaran()
+lingkaran2.r = 10
+lingkaran2.hitungLuas()
+lingkaran2.hitungKeliling()
