@@ -1,0 +1,48 @@
+class AC:
+    '''Kelas untuk mempresentasikan AC'''
+
+    def __init__(self):
+        self.suhu = 16
+        self.statusAC = "mati"
+
+    def hidupkan(self):
+        '''Metode untuk menghidupkan AC'''
+        self.statusAC = "hidup"
+
+    def matikan(self):
+        '''Metode untuk mematikan AC'''
+        self.statusAC = "mati"
+
+    def naikanSuhu(self):
+        '''Metode untuk menaikkan suhu AC'''
+        self.suhu += 1
+
+    def turunkanSuhu(self):
+        '''Metode untuk menurunkan suhu AC'''
+        self.suhu -= 1
+
+    def info(self):
+        '''Metode untuk menampilkan informasi AC'''
+        print(f"Status AC\t: {self.statusAC}")
+        print(f"Suhu AC\t\t: {self.suhu}°C")
+
+
+# Contoh penggunaan class AC
+ac_kamar = AC()
+
+ac_kamar.info()
+print("Menghidupkan AC")
+ac_kamar.hidupkan()
+ac_kamar.info()
+
+print("Menaikkan suhu AC sebanyak 1 derajat")
+ac_kamar.naikanSuhu()
+ac_kamar.info()
+
+print("Menurunkan suhu AC sebanyak 1 derajat")
+ac_kamar.turunkanSuhu()
+ac_kamar.info()
+
+print("Mematikan AC")
+ac_kamar.matikan()
+ac_kamar.info()
