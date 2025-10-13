@@ -1,0 +1,41 @@
+class Mahasiswi :
+    def __init__(self, nama = 'Dewi Wuryan', nim = 2421400173, uts = 0, uas = 0):
+        self.__nama = nama
+        self.__nim = nim
+        self.__uts = uts
+        self.__uas = uas
+        
+    def set_name(self, nama):
+        self.__nama = nama
+    def get_name(self):
+        return self.__nama
+    def set_nim(self, nim):
+        self.__nim = nim
+    def get_nim(self):
+        return self.__nim
+    def set_uts(self, uts):
+        self.__uts = uts
+    def get_uts(self):
+        return self.__uts
+    def set_uas(self, uas):
+        self.__uas = uas
+    def get_uas(self):
+        return self.__uas
+    
+    def info(self):
+        nilaiAkhir = (self.__uts + self.__uas)//2
+        print (f'Nama\t: {self.__nama}')
+        print (f'NIM\t: {self.__nim}')
+        print (f'UTS\t: {self.__uts}')
+        print (f'UAS\t: {self.__uas}')
+        print (f'Nilai Akhir\t: {nilaiAkhir}')
+
+mhs = Mahasiswi()
+print('\nData Awal')
+mhs.info()
+
+print('\nSetelah diubah secara langsung')
+mhs.set_uts(80)
+mhs.set_uas(84)
+mhs.info()
+
