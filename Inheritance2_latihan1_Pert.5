@@ -1,0 +1,41 @@
+class Calculator:
+    def __init__(self, a=0, b=1):
+        self.a = a
+        self.b = b
+
+    def show_calculator(self):
+        print("\n----- Kalkulatornya Dewi Wuryan -----")
+
+    def divide(self):
+        if self.b != 0:
+            hasil = self.a // self.b
+            print(f"Hasil pembagian\t\t{self.a} ÷ {self.b} = {hasil}")
+        else:
+            print("Error: Tidak bisa membagi dengan nol!")
+
+    def info(self):
+        print(f"Angka pertama = {self.a}, Angka kedua = {self.b}")
+
+
+class Sum(Calculator):
+    def sum(self):
+        hasil = self.a + self.b
+        print(f"Hasil penjumlahan\t{self.a} + {self.b} = {hasil}")
+
+
+class Multi(Calculator):
+    def multi(self):
+        hasil = self.a * self.b
+        print(f"Hasil perkalian\t\t{self.a} x {self.b} = {hasil}")
+
+
+Calculator = Calculator(10, 5)
+Calculator.show_calculator()
+Calculator.info()
+Calculator.divide()
+
+penjumlahan = Sum(10, 5)
+penjumlahan.sum()
+
+perkalian = Multi(10, 5)
+perkalian.multi()
