@@ -1,0 +1,30 @@
+class Lingkaran():
+    def __init__(self, radius):
+        self.__radius = radius
+    def set_radius(self, radius):
+        self.__radius = radius
+    def get_radius(self):
+        return self.__radius 
+    def get_luas(self):
+        return 3.14 * (self.__radius ** 2)
+
+class Tabung(Lingkaran):
+    def __init__(self, radius = 0, tinggi = 0):
+        super().__init__(radius)
+        self.__tinggi = tinggi
+    def set_tinggi(self, tinggi):
+        self.__tinggi = tinggi
+    def get_tinggi(self):
+        return self.__tinggi
+    def get_volume(self):
+        return self.get_luas() * self.__tinggi
+    
+a1 = Lingkaran(7)
+print('Jari-jari lingkaran\t: ', a1.get_radius())
+print('Luas lingkaran\t\t: ', a1.get_luas())
+
+t1 = Tabung(7, 10)
+print('Jari-jari tabung\t: ', t1.get_radius())
+print('Tinggi tabung\t\t: ', t1.get_tinggi())
+print('Luas alas tabung\t: ', t1.get_luas())
+print('Volume tabung\t\t: ', t1.get_volume())
