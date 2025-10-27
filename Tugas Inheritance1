@@ -1,0 +1,59 @@
+# ==========================
+# Contoh Program Inheritance
+# ==========================
+
+# Kelas Induk
+class Pegawai:
+    def __init__(self):
+        self.gaji_pokok = 1500000
+
+    def getGaji(self):
+        return self.gaji_pokok
+
+
+# Kelas Turunan Staf
+class Staf(Pegawai):
+    def __init__(self, jumlahKehadiran, tarifHarian):
+        super().__init__()  # memanggil konstruktor Pegawai
+        self.jumlahKehadiran = jumlahKehadiran
+        self.tarifHarian = tarifHarian
+
+    def getGajiStaf(self):
+        return self.getGaji() + (self.jumlahKehadiran * self.tarifHarian)
+
+
+# Kelas Turunan Dosen
+class Dosen(Pegawai):
+    def __init__(self, jumlahSKS, tarifSKS):
+        super().__init__()
+        self.jumlahSKS = jumlahSKS
+        self.tarifSKS = tarifSKS
+
+    def getGajiDosen(self):
+        return self.getGaji() + (self.jumlahSKS * self.tarifSKS)
+
+
+# ==========================
+# Bagian Program Utama
+# ==========================
+def main():
+    print("=== Program Perhitungan Gaji Pegawai ===")
+    
+    # Input data staf
+    print("\n-- Data Staf --")
+    kehadiran = int(input("Masukkan jumlah kehadiran: "))
+    tarif_harian = int(input("Masukkan tarif harian: "))
+    staf1 = Staf(kehadiran, tarif_harian)
+    print(f"Gaji Staf: Rp {staf1.getGajiStaf():,}")
+
+    # Input data dosen
+    print("\n-- Data Dosen --")
+    sks = int(input("Masukkan jumlah SKS: "))
+    tarif_sks = int(input("Masukkan tarif per SKS: "))
+    dosen1 = Dosen(sks, tarif_sks)
+    print(f"Gaji Dosen: Rp {dosen1.getGajiDosen():,}")
+
+
+# Jalankan program
+if __name__ == "__main__":
+    main()
