@@ -1,1 +1,28 @@
+class Family:
+    def show_family(self):
+        print("Kita adalah keluarga")
+
+class Father(Family):
+    def __init__(self, name = ""):
+        self.father_name = name
+        
+    def show_father(self):
+        print("Ayah saya adalah ", self.father_name)
+
+class Mother(Family):
+    def __init__(self, name):
+        self.mother_name = name
+
+    def show_mother(self):
+        print("Ibu saya adalah ", self.mother_name)
+
+class Child(Father, Mother):
+    def show_parent(self):
+        self.show_father()
+        self.show_mother()        
+        
+son = Child()
+son.father_name = 'Abdullah'
+son.mother_name = 'Aminah'
+son.show_parent()
 
