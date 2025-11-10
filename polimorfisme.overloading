@@ -1,0 +1,39 @@
+from abc import ABC, abstractmethod
+class BangunDatar(ABC):
+    @abstractmethod
+    def hitung_luas(self):
+        pass
+    def hitung_keliling(self):
+        pass
+
+class Persegi(BangunDatar):
+    def __init__ (self, sisi = 0):
+        self.sisi = sisi
+    def hitung_luas(self):
+        return self.sisi * self.sisi
+    def hitung_keliling(self):
+        return self.sisi * 4
+
+class SegiPanjang(BangunDatar):
+    def __init__ (self, panjang = 0, lebar = 0):
+        self.panjang = panjang
+        self.lebar = lebar
+    def hitung_luas(self):
+        return self.panjang *  self.lebar
+    def hitung_keliling(self):
+        return 2 * (self.panjang +  self.lebar)
+
+# contoh penggunaan
+def display_info(bangun_datar):
+    print('Informasi bangun datar : ', type(bangun_datar).__name__)
+    print('Luas  \t : ', bangun_datar.hitung_luas())
+    print ('keliling : ', bangun_datar.hitung_keliling())
+    print('-' * 35)
+
+origami = Persegi(5)
+buku = Persegi()
+buku.sisi = 10
+buku_gambar = SegiPanjang(12, 5)
+daftar_bentuk = [origami, buku, buku_gambar]
+for bentuk in daftar_bentuk:
+    display_info(bentuk)
