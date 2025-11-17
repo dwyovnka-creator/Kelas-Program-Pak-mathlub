@@ -1,0 +1,42 @@
+from abc import ABC, abstractmethod
+class Pembayaran(ABC):
+    @abstractmethod
+    def validasi(self):
+        pass
+    @abstractmethod
+    def proses(self, jumlah):
+        pass
+class kartuKredit(Pembayaran):
+    def __init__(self, nomor, cvv):
+        self.nomor = nomor
+        self.cvv =  cvv
+    def validasi(self):
+        if len(self.nomor) == 16 and len(self.cvv) == 3:
+            return True
+        return False
+    def proses(self, jumlah):
+        if self.validasi():
+            return (f"pembayaran sebesar {jumlah} berhasil dengan kartu kredit.")
+        return (" Validasi kartu kredit gagal")
+    
+class Ewallet(Pembayaran):
+    def __init__(self, nomor_hp, pin):
+        self.nomor_hp = nomor_hp
+        self.pin = pin
+        self.saldo = 1000000 
+    def validasi(self):
+        return len(self.pin) == 6
+    def proses (self, jumlah):
+        if self.validasi() and self.saldo >= jumlah:
+            self.saldo -= jumlah
+            return (f'Pembayaran sebesar {jumlah} berhasil dengan Ewallet.')
+        return ("Validasi kartu kredit gagal atau saldo tidak cukup ")
+    
+def membayar(metode, jumlah):
+    print (metode.proses(jumlah))
+
+#contoh penggunaan
+kartu = kartuKredit("1234567812345678", "123")
+ewallet = Ewallet("9865389407", "123456")                                                                                                                                                                                                                                                                                                                                                                     
+membayar(kartu, 500000)
+membayar(ewallet, 200000)
