@@ -1,0 +1,94 @@
+from abc import ABC, abstractmethod
+
+class Barang(ABC):
+    def __init__(self, idBarang, namaBarang, kategori, hargaDasar, stok):        
+        self.idBarang = idBarang
+        self.namaBarang = namaBarang
+        self.kategori = kategori
+        self.hargaDasar = hargaDasar
+        self.stok = stok
+    
+    @abstractmethod
+    def hitunghargajual(self):
+        pass
+
+    def info(self):
+        print (f"ID           : {self.idBarang}")
+        print (f"Nama Barang  : {self.namaBarang}")
+        print (f"Kategori     : {self.kategori}")
+        print (f"Harga Dasar  : {self.hargaDasar}")
+        print (f"Stok Barang  : {self.stok}")
+
+
+class BarangElektronik(Barang):
+    def __init__(self, idBarang, namaBarang, hargaDasar, stok, garansi, daya):
+        super().__init__(idBarang, namaBarang, "Elektronik", hargaDasar, stok)
+        self.garansi = garansi
+        self.daya = daya
+
+    def getGaransi(self):
+        return self.garansi 
+
+    def setGaransi(self, g):
+        self.garansi = g
+
+    def getDaya(self):
+        return self.daya 
+
+    def setDaya(self, d):
+        self.daya = d
+    
+    def hitunghargajual(self):
+        return self.hargaDasar + (0.1 * self.hargaDasar)
+
+    def info(self):
+        super().info()
+        print(f"Garansi      : {self.garansi} bulan")
+        print(f"Daya         : {self.daya} Watt")
+        print(f"Harga Jual   : {self.hitunghargajual()}")
+
+
+class BarangPakaian(Barang):
+    def __init__(self, idBarang, namaBarang, hargaDasar, stok, ukuran, bahan):
+        super().__init__(idBarang, namaBarang, "Pakaian", hargaDasar, stok)
+        self.ukuran = ukuran
+        self.bahan = bahan
+
+    def getUkuran(self):
+        return self.ukuran 
+
+    def setUkuran(self, size):
+        self.ukuran = size
+
+    def getBahan(self):
+        return self.bahan 
+
+    def setBahan(self, bhn):
+        self.bahan = bhn
+    
+    def hitunghargajual(self):
+        harga = self.hargaDasar
+
+        if self.ukuran.upper() in ["XL", "XXL"]:
+            harga += 15000  
+
+        if self.bahan.lower() == "premium":
+            harga += 0.05 * self.hargaDasar
+
+        return harga
+
+    def info(self):
+        super().info()
+        print(f"Ukuran       : {self.ukuran}")
+        print(f"Bahan        : {self.bahan}")
+        print(f"Harga Jual   : {self.hitunghargajual()}")
+
+e1 = BarangElektronik("E01", "Kipas Angin", 300000, 10, 12, 45)
+p1 = BarangPakaian("P01", "Kaos Oversize", 20000, 20, "XL", "Katun")
+
+daftar_barang = [e1, p1]
+
+for barang in daftar_barang:
+    print("=" * 30)
+    barang.info()             
+    print("Bayar :", barang.hitunghargajual())
